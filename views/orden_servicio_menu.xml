@@ -1,0 +1,47 @@
+<odoo>
+    <!-- Cambiar nombre del menú -->
+    <record id="sale.menu_sale_quotations" model="ir.ui.menu">
+        <field name="name">Órdenes de Servicio</field>
+    </record>
+
+    <!-- Cambiar nombre de la acción de presupuestos -->
+    <record id="sale.action_quotations" model="ir.actions.act_window">
+        <field name="name">Órdenes de Servicio</field>
+    </record>
+
+    <!-- Cambiar el título del formulario de cotización -->
+    <record id="sale.view_order_form" model="ir.ui.view">
+        <field name="name">sale.order.form.service</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="attributes">
+                <attribute name="string">Órdenes de Servicio</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Cambiar el título de la vista de lista -->
+    <record id="sale.view_quotation_tree" model="ir.ui.view">
+        <field name="name">sale.order.tree.service</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="string">Órdenes de Servicio</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Cambiar el título de la vista kanban -->
+    <record id="sale.sale_order_kanban_view" model="ir.ui.view">
+        <field name="name">sale.order.kanban.service</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.sale_order_kanban_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//kanban" position="attributes">
+                <attribute name="title">Órdenes de Servicio</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>
