@@ -18,7 +18,7 @@
         <field name="action" ref="sale_action_quotations_override_service"/>
     </record>
 
-    <!-- Cambiar el título del formulario de cotización -->
+    <!-- Cambiar el título del formulario -->
     <record id="view_order_form_override_service" model="ir.ui.view">
         <field name="name">sale.order.form.service</field>
         <field name="model">sale.order</field>
@@ -30,7 +30,7 @@
         </field>
     </record>
 
-    <!-- Cambiar el título de la vista de lista (Odoo 18 usa <list>) -->
+    <!-- Cambiar el título de la vista lista (Odoo 18 usa <list>) -->
     <record id="view_quotation_list_override_service" model="ir.ui.view">
         <field name="name">sale.order.list.service</field>
         <field name="model">sale.order</field>
@@ -42,11 +42,11 @@
         </field>
     </record>
 
-    <!-- Cambiar el título de la vista kanban -->
+    <!-- Cambiar el título del kanban -->
     <record id="sale_order_kanban_override_service" model="ir.ui.view">
         <field name="name">sale.order.kanban.service</field>
         <field name="model">sale.order</field>
-        <field name="inherit_id" ref="sale.sale_order_kanban_view"/>
+        <field name="inherit_id" ref="sale.view_sale_order_kanban"/>
         <field name="arch" type="xml">
             <xpath expr="//kanban" position="attributes">
                 <attribute name="title">Órdenes de Servicio</attribute>
