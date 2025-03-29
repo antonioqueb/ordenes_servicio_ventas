@@ -4,21 +4,12 @@
         <field name="name">Órdenes de Servicio</field>
     </record>
 
-    <!-- Crear una nueva acción con el nombre cambiado -->
-    <record id="sale_action_quotations_override_service" model="ir.actions.act_window">
+    <!-- Cambiar nombre de la acción de "Presupuestos" a "Órdenes de Servicio" -->
+    <record id="sale.action_quotations_with_onboarding" model="ir.actions.act_window">
         <field name="name">Órdenes de Servicio</field>
-        <field name="res_model">sale.order</field>
-        <field name="view_mode">list,form</field>
-        <field name="domain">[('state','in',('draft','sent'))]</field>
-        <field name="context">{'search_default_draft': 1, 'default_state': 'draft'}</field>
     </record>
 
-    <!-- Reasignar el menú a la nueva acción -->
-    <record id="sale.menu_sale_quotations" model="ir.ui.menu">
-        <field name="action" ref="sale_action_quotations_override_service"/>
-    </record>
-
-    <!-- Cambiar el título del formulario -->
+    <!-- Cambiar el título del formulario de cotización -->
     <record id="view_order_form_override_service" model="ir.ui.view">
         <field name="name">sale.order.form.service</field>
         <field name="model">sale.order</field>
@@ -30,23 +21,23 @@
         </field>
     </record>
 
-    <!-- Cambiar el título de la vista lista (Odoo 18 usa <list>) -->
-    <record id="view_quotation_list_override_service" model="ir.ui.view">
-        <field name="name">sale.order.list.service</field>
+    <!-- Cambiar el título de la vista de lista -->
+    <record id="view_quotation_tree_override_service" model="ir.ui.view">
+        <field name="name">sale.order.tree.service</field>
         <field name="model">sale.order</field>
-        <field name="inherit_id" ref="sale.view_quotation_tree"/>
+        <field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding"/>
         <field name="arch" type="xml">
-            <xpath expr="//list" position="attributes">
+            <xpath expr="//tree" position="attributes">
                 <attribute name="string">Órdenes de Servicio</attribute>
             </xpath>
         </field>
     </record>
 
-    <!-- Cambiar el título del kanban -->
+    <!-- Cambiar el título de la vista kanban -->
     <record id="sale_order_kanban_override_service" model="ir.ui.view">
         <field name="name">sale.order.kanban.service</field>
         <field name="model">sale.order</field>
-        <field name="inherit_id" ref="sale.view_sale_order_kanban"/>
+        <field name="inherit_id" ref="sale.view_quotation_kanban_with_onboarding"/>
         <field name="arch" type="xml">
             <xpath expr="//kanban" position="attributes">
                 <attribute name="title">Órdenes de Servicio</attribute>
