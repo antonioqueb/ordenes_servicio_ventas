@@ -1,16 +1,25 @@
 <odoo>
-    <!-- Cambiar nombre del menú -->
+    <!-- Cambiar nombre del menú de "Presupuestos" a "Órdenes de Servicio" -->
     <record id="sale.menu_sale_quotations" model="ir.ui.menu">
         <field name="name">Órdenes de Servicio</field>
     </record>
 
-    <!-- Cambiar nombre de la acción de presupuestos -->
-    <record id="sale.action_quotations" model="ir.actions.act_window">
+    <!-- Cambiar nombre de la acción de "Presupuestos" a "Órdenes de Servicio" -->
+    <record id="sale_action_quotations_override_service" model="ir.actions.act_window">
         <field name="name">Órdenes de Servicio</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('state','in',('draft','sent'))]</field>
+        <field name="context">{'search_default_draft': 1, 'default_state': 'draft'}</field>
+    </record>
+
+    <!-- Reasignar la acción original del menú a la nueva acción -->
+    <record id="sale.menu_sale_quotations" model="ir.ui.menu">
+        <field name="action" ref="sale_action_quotations_override_service"/>
     </record>
 
     <!-- Cambiar el título del formulario de cotización -->
-    <record id="sale.view_order_form" model="ir.ui.view">
+    <record id="view_order_form_override_service" model="ir.ui.view">
         <field name="name">sale.order.form.service</field>
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
@@ -22,7 +31,7 @@
     </record>
 
     <!-- Cambiar el título de la vista de lista -->
-    <record id="sale.view_quotation_tree" model="ir.ui.view">
+    <record id="view_quotation_tree_override_service" model="ir.ui.view">
         <field name="name">sale.order.tree.service</field>
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_quotation_tree"/>
@@ -34,7 +43,7 @@
     </record>
 
     <!-- Cambiar el título de la vista kanban -->
-    <record id="sale.sale_order_kanban_view" model="ir.ui.view">
+    <record id="sale_order_kanban_override_service" model="ir.ui.view">
         <field name="name">sale.order.kanban.service</field>
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.sale_order_kanban_view"/>
