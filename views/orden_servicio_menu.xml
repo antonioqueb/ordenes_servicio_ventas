@@ -21,11 +21,11 @@
         </field>
     </record>
 
-    <!-- Cambiar el título de la vista de lista -->
+    <!-- Cambiar el título de la vista de lista (tree) -->
     <record id="view_quotation_tree_override_service" model="ir.ui.view">
         <field name="name">sale.order.tree.service</field>
         <field name="model">sale.order</field>
-        <field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding"/>
+        <field name="inherit_id" ref="sale.order.list"/>
         <field name="arch" type="xml">
             <xpath expr="//tree" position="attributes">
                 <attribute name="string">Órdenes de Servicio</attribute>
