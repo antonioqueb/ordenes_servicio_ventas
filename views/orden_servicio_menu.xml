@@ -1,12 +1,12 @@
 <odoo>
     <!-- Cambiar nombre del menú de "Presupuestos" a "Órdenes de Servicio" -->
     <record id="sale.menu_sale_quotations" model="ir.ui.menu">
-        <field name="name" translate="off">Órdenes de Servicio</field>
+        <field name="name">Órdenes de Servicio</field>
     </record>
 
     <!-- Cambiar nombre de la acción de "Presupuestos" a "Órdenes de Servicio" -->
     <record id="sale.action_quotations_with_onboarding" model="ir.actions.act_window">
-        <field name="name" translate="off">Órdenes de Servicio</field>
+        <field name="name">Órdenes de Servicio</field>
     </record>
 
     <!-- Cambiar el título del formulario de cotización -->
@@ -16,22 +16,23 @@
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
             <xpath expr="//form" position="attributes">
-                <attribute name="string" translate="off">Órdenes de Servicio</attribute>
+                <attribute name="string">Órdenes de Servicio</attribute>
             </xpath>
         </field>
     </record>
 
-    <!-- Cambiar el título de la vista de lista -->
+    <!-- Cambiar el título de la vista de lista (usamos la vista base de árbol directamente) -->
     <record id="view_quotation_tree_override_service" model="ir.ui.view">
         <field name="name">sale.order.tree.service</field>
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding"/>
         <field name="arch" type="xml">
             <xpath expr="//list" position="attributes">
-                <attribute name="string" translate="off">Órdenes de Servicio</attribute>
+                <attribute name="string">Órdenes de Servicio</attribute>
             </xpath>
         </field>
     </record>
+
 
     <!-- Cambiar el título de la vista kanban -->
     <record id="sale_order_kanban_override_service" model="ir.ui.view">
@@ -40,7 +41,7 @@
         <field name="inherit_id" ref="sale.view_quotation_kanban_with_onboarding"/>
         <field name="arch" type="xml">
             <xpath expr="//kanban" position="attributes">
-                <attribute name="title" translate="off">Órdenes de Servicio</attribute>
+                <attribute name="title">Órdenes de Servicio</attribute>
             </xpath>
         </field>
     </record>
