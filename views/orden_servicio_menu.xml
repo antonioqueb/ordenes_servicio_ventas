@@ -4,7 +4,7 @@
         <field name="name">Órdenes de Servicio</field>
     </record>
 
-    <!-- Cambiar nombre de la acción de "Presupuestos" a "Órdenes de Servicio" -->
+    <!-- Crear una nueva acción con el nombre cambiado -->
     <record id="sale_action_quotations_override_service" model="ir.actions.act_window">
         <field name="name">Órdenes de Servicio</field>
         <field name="res_model">sale.order</field>
@@ -13,7 +13,7 @@
         <field name="context">{'search_default_draft': 1, 'default_state': 'draft'}</field>
     </record>
 
-    <!-- Reasignar la acción original del menú a la nueva acción -->
+    <!-- Reasignar el menú a la nueva acción -->
     <record id="sale.menu_sale_quotations" model="ir.ui.menu">
         <field name="action" ref="sale_action_quotations_override_service"/>
     </record>
@@ -30,13 +30,13 @@
         </field>
     </record>
 
-    <!-- Cambiar el título de la vista de lista -->
-    <record id="view_quotation_tree_override_service" model="ir.ui.view">
-        <field name="name">sale.order.tree.service</field>
+    <!-- Cambiar el título de la vista de lista (Odoo 18 usa <list>) -->
+    <record id="view_quotation_list_override_service" model="ir.ui.view">
+        <field name="name">sale.order.list.service</field>
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_quotation_tree"/>
         <field name="arch" type="xml">
-            <xpath expr="//tree" position="attributes">
+            <xpath expr="//list" position="attributes">
                 <attribute name="string">Órdenes de Servicio</attribute>
             </xpath>
         </field>
